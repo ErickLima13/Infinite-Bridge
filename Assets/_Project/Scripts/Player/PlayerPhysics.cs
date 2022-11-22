@@ -5,16 +5,14 @@ using UnityEngine;
 
 public class PlayerPhysics : MonoBehaviour
 {
+    private GameManager gameManager;
     private Rigidbody2D playerRb;
 
     private Vector2 inputs;
 
-    [Range(1,5)] public float speed;
-
-    public float[] limits;
-
     private void Initialization()
     {
+        gameManager = FindObjectOfType(typeof(GameManager)) as GameManager;
         playerRb = GetComponent<Rigidbody2D>();
     }
 
@@ -35,7 +33,7 @@ public class PlayerPhysics : MonoBehaviour
         inputs.x = Input.GetAxisRaw("Horizontal");
         inputs.y = Input.GetAxisRaw("Vertical");
 
-        playerRb.velocity = inputs * speed;
+        playerRb.velocity = inputs * gameManager.speed;
 
         MovementLimits();
         Flip(); 
@@ -58,22 +56,22 @@ public class PlayerPhysics : MonoBehaviour
         float posY = transform.position.y;
         float posX = transform.position.x;
 
-        if(transform.position.y > limits[0])
+        if(transform.position.y > gameManager.limits[0])
         {
-            posY = limits[0];
+            posY = gameManager.limits[0];
         }
-        else if(transform.position.y < limits[1])
+        else if(transform.position.y < gameManager.limits[1])
         {
-            posY = limits[1];
+            posY = gameManager.limits[1];
         }
 
-        if (transform.position.x > limits[2])
+        if (transform.position.x > gameManager.limits[2])
         {
-            posX = limits[2];
+            posX = gameManager.limits[2];
         }
-        else if (transform.position.x < -limits[2])
+        else if (transform.position.x < -gameManager.limits[2])
         {
-            posX = -limits[2];
+            posX = -gameManager.limits[2];
         }
 
         transform.position = new(posX, posY, 0);
