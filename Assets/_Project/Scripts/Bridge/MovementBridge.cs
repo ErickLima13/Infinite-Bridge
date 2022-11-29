@@ -7,6 +7,8 @@ public class MovementBridge : MonoBehaviour
     private GameManager gameManager;
     private Rigidbody2D bridgeRb;
 
+    private bool isInstantiated;
+
     private void Initialization()
     {
         gameManager = FindObjectOfType(typeof(GameManager)) as GameManager;
@@ -25,6 +27,21 @@ public class MovementBridge : MonoBehaviour
     void Update()
     {
         AutoDestruction();
+        SpawnNewBridge();
+    }
+
+    private void SpawnNewBridge()
+    {
+        if (!isInstantiated)
+        {
+            if(transform.position.x <= 0)
+            {
+                isInstantiated = true;
+                GameObject temp = Instantiate(gameManager.bridgePrefab);
+                Vector3 pos = new(transform.position.x + gameManager.sizeBridge, transform.position.y, 0);
+                temp.transform.position = pos;
+            }
+        }
     }
 
     private void AutoDestruction()

@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     [Header("Objects Settings")]
     public float objectsSpeed;
     public float limitDestruction;
+    public float sizeBridge;
+
+    public GameObject bridgePrefab;
+
 
     // Start is called before the first frame update
     void Start()
