@@ -322,7 +322,7 @@ Transform:
   - {fileID: 1256027305}
   - {fileID: 895191553}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &663666611
 GameObject:
@@ -667,6 +667,12 @@ MonoBehaviour:
   limitDestruction: -6
   sizeBridge: 6
   bridgePrefab: {fileID: 2744784111030957939, guid: 9c31c439b89258449bfb744dceb2c5fe, type: 3}
+  orderTop: 1
+  orderDown: 3
+  posYtop: -0.3
+  posYdown: -0.4
+  barrelPrefab: {fileID: 3128513313616421641, guid: b4584c4956375014b92092cb788bc17b, type: 3}
+  spawnTime: 1
 --- !u!4 &1700606891
 Transform:
   m_ObjectHideFlags: 0
@@ -846,7 +852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068402263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4, z: 0}
+  m_LocalPosition: {x: 0.82, y: -0.689, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -918,9 +924,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge
       objectReference: {fileID: 0}
+    - target: {fileID: 2744784111030957939, guid: 9c31c439b89258449bfb744dceb2c5fe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2744784111030957941, guid: 9c31c439b89258449bfb744dceb2c5fe, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2744784111030957941, guid: 9c31c439b89258449bfb744dceb2c5fe, type: 3}
       propertyPath: m_LocalPosition.x
