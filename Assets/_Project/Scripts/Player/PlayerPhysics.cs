@@ -76,4 +76,10 @@ public class PlayerPhysics : MonoBehaviour
 
         transform.position = new(posX, posY, 0);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.LogError("PUFT");
+        print("BAteu");
+    }
 }

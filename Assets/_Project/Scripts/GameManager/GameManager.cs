@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private PlayerPhysics playerPhysics;
+
     [Header("Player Settings")]
     [Range(1, 5)] public float speed;
     public float[] limits;
@@ -22,16 +24,21 @@ public class GameManager : MonoBehaviour
     public GameObject barrelPrefab;
     public float spawnTime;
 
+    [Header("Globals")]
+    public int score;
+    public float posXPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerPhysics = FindObjectOfType(typeof(PlayerPhysics)) as PlayerPhysics;
         StartCoroutine(SpawnBarrel());
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        posXPlayer = playerPhysics.transform.position.x;
     }
 
     private IEnumerator SpawnBarrel()
@@ -58,5 +65,10 @@ public class GameManager : MonoBehaviour
         temp.GetComponent<SpriteRenderer>().sortingOrder = order;
 
         StartCoroutine(SpawnBarrel());
+    }
+
+    public void AddScore(int value)
+    {
+        score += value;
     }
 }

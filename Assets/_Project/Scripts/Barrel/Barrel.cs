@@ -7,7 +7,7 @@ public class Barrel : MonoBehaviour
     private GameManager gameManager;
     private Rigidbody2D barrelRb;
 
-    private bool isInstantiated;
+    private bool scored;
 
     private void Initialization()
     {
@@ -28,11 +28,28 @@ public class Barrel : MonoBehaviour
         AutoDestruction();
     }
 
+    private void LateUpdate()
+    {
+        ToScore();
+    }
+
     private void AutoDestruction()
     {
         if (transform.position.x < gameManager.limitDestruction)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void ToScore()
+    {
+        if (!scored)
+        {
+            if(transform.position.x < gameManager.posXPlayer)
+            {
+                scored = true;
+                gameManager.AddScore(10);
+            }
         }
     }
 }
