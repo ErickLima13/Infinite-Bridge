@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     [Header("Globals")]
     public int score;
     public float posXPlayer;
+    public TextMeshProUGUI scoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +73,8 @@ public class GameManager : MonoBehaviour
     public void AddScore(int value)
     {
         score += value;
+        scoreText.text = score.ToString();
+        
     }
 
     public void ChangeScene(string scene)
