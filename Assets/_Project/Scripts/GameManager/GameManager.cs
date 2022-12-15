@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
     public float posXPlayer;
     public TextMeshProUGUI scoreText;
 
+    [Header("Sfx")]
+    public AudioSource audioSource;
+    public AudioClip scoreSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,8 +77,8 @@ public class GameManager : MonoBehaviour
     public void AddScore(int value)
     {
         score += value;
-        scoreText.text = score.ToString();
-        
+        scoreText.text = "Score: " + score.ToString();
+        audioSource.PlayOneShot(scoreSound);
     }
 
     public void ChangeScene(string scene)
